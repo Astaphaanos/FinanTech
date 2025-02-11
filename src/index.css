@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+:root {
+    --cor-text-header: #d7dae4;
+    --cor-bg-header: #1B2536;
+    --cor-input: #2A3342;
+}

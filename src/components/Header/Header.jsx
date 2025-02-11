@@ -5,18 +5,17 @@ const Header = () => {
     return (
         <header className="bg-[var(--cor-bg-header)] text-[var(--cor-text-header)] p-8">
             <nav className="flex items-center justify-between">
-                <div>
-                    {/*Imagem do site*/}
-
-
+                
+                <div className="flex items-center">
+                    <img src="/images/logo.png" alt="FinanTech Logo" className="w-56 mr-8"/>
                     <ul className="flex cursor-pointer">
-                        <li className="mr-6">
+                        <li className="mr-8">
                             <Link to="/">Dashboard</Link>
                         </li>
-                        <li className="mr-6">
+                        <li className="mr-8">
                             <Link to="/resumo-financeiro">Resumo Financeiro</Link>
                         </li>
-                        <li className="mr-6">
+                        <li>
                             <Link to="/planos-financeiros">Planos Financeiros</Link>
                         </li>
                     </ul>

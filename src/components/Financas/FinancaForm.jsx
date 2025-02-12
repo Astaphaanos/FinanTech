@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const FinancaForm = ({adicionarFinanca}) => {
     const [nome, setNome] = useState('');
@@ -25,14 +26,15 @@ const FinancaForm = ({adicionarFinanca}) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
+        <form onSubmit={handleSubmit} >
+            <div className='flex flex-col'>
                 <input 
                 type='text'
                 placeholder='Nome da conta'
                 value={nome}
                 onChange={(e) => setNome(e.target.value)}
-                className=''
+                className='p-2 text-xl text-black m-4 focus:outline-none 
+                focus:ring-2 focus:ring-[var(--cor-text-header)]'
                 required
                 />
 
@@ -41,23 +43,16 @@ const FinancaForm = ({adicionarFinanca}) => {
                 placeholder='Categoria da Conta'
                 value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
-                className=''
-                required
-                />
-
-                <input 
-                type='text'
-                placeholder='Nome da conta'
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
-                className=''
+                className='p-2 text-xl text-black m-4 focus:outline-none 
+                focus:ring-2 focus:ring-[var(--cor-text-header)]'
                 required
                 />
 
                 <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
-                className=''
+                className='p-2 text-xl text-black m-4 focus:outline-none 
+                focus:ring-2 focus:ring-[var(--cor-text-header)]'
                 required
                 >
                     <option value='Pago'>Pago</option>
@@ -68,7 +63,8 @@ const FinancaForm = ({adicionarFinanca}) => {
                 type='date'
                 value={data}
                 onChange={(e) => setData(e.target.value)}
-                className=''
+                className='p-2 text-xl text-black m-4 focus:outline-none 
+                focus:ring-2 focus:ring-[var(--cor-text-header)]'
                 required
                 />
 
@@ -77,16 +73,21 @@ const FinancaForm = ({adicionarFinanca}) => {
                 placeholder='Valor da conta'
                 value={valor}
                 onChange={(e) => setValor(e.target.value)}
-                className=''
+                className='p-2 text-xl text-black m-4 focus:outline-none 
+                focus:ring-2 focus:ring-[var(--cor-text-header)]'
                 required
                 />
             </div>
 
-            <button type="submit" className="">
+            <button type="submit" className="p-4 bg-green-600 text-lg m-4 rounded-lg font-bold">
                 Adicionar Finança
             </button>
         </form>
     );
 };
 
-export default FinancaForm
+FinancaForm.propTypes = {
+    adicionarFinanca: PropTypes.func.isRequired, 
+  };
+
+export default FinancaForm;

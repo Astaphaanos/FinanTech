@@ -102,7 +102,7 @@ const Home = () => {
 
           <div className="bg-white rounded-lg pl-18 pr-18 pt-12 pb-12">
             <h3 className="text-[var(--cor-text-despesa)] font-bold text-3xl pb-4">
-              Total de Depesa:
+              Total de Despesa:
             </h3>
             <p className="text-[var(--cor-text-despesa)] font-bold text-3xl">
               R$ {totalDespesa.toFixed(2)}

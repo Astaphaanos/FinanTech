@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const FinancaForm = ({adicionarFinanca}) => {
-    const [nome, setNome] = useState('');
-    const [categoria, setCategoria] = useState('');
-    const [status, setStatus] = useState('Não Pago');
-    const [data, setData] = useState('');
-    const [valor, setValor] = useState('');
+const FinancaForm = ({adicionarFinanca, financaEditando, setFinancaEditando, indiceEditando, setIndiceEditando}) => {
+    const [nome, setNome] = useState(financaEditando ? financaEditando.nome : '');
+    const [categoria, setCategoria] = useState(financaEditando ? financaEditando.categoria: '');
+    const [status, setStatus] = useState(financaEditando ? financaEditando.status : 'Não pago');
+    const [data, setData] =  useState(financaEditando ? financaEditando.data : '');
+    const [valor, setValor] = useState(financaEditando ? financaEditando.valor : '');
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,10 +17,18 @@ const FinancaForm = ({adicionarFinanca}) => {
             data,
             valor: parseFloat(valor)
         };
-        adicionarFinanca(novaFinanca);
+        if(financaEditando) {
+            adicionarFinanca(novaFinanca, indiceEditando);
+            setFinancaEditando(null);
+            setIndiceEditando(null)
+        } else {
+            adicionarFinanca(novaFinanca);
+        }
+
+        // Limpar o form
         setNome('');
         setCategoria('');
-        setStatus('Não Pago');
+        setStatus('Não pago');
         setData('');
         setValor('');
     };
@@ -34,7 +42,7 @@ const FinancaForm = ({adicionarFinanca}) => {
                 value={nome}
                 onChange={(e) => setNome(e.target.value)}
                 className='p-2 text-xl text-black m-4 focus:outline-none 
-                focus:ring-2 focus:ring-[var(--cor-text-header)]'
+                focus:ring-2 focus:ring-[var(--cor-text-header)] bg-[var(--cor-bg-input)] rounded-lg'
                 required
                 />
 
@@ -44,7 +52,7 @@ const FinancaForm = ({adicionarFinanca}) => {
                 value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
                 className='p-2 text-xl text-black m-4 focus:outline-none 
-                focus:ring-2 focus:ring-[var(--cor-text-header)]'
+                focus:ring-2 focus:ring-[var(--cor-text-header)] bg-[var(--cor-bg-input)] rounded-lg'
                 required
                 />
 
@@ -52,11 +60,15 @@ const FinancaForm = ({adicionarFinanca}) => {
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
                 className='p-2 text-xl text-black m-4 focus:outline-none 
-                focus:ring-2 focus:ring-[var(--cor-text-header)]'
+                focus:ring-2 focus:ring-[var(--cor-text-header)] bg-[var(--cor-bg-input)] rounded-lg'
                 required
                 >
-                    <option value='Pago'>Pago</option>
-                    <option value='Não Pago'>Não Pago</option>
+                    <option value='Pago'>
+                        Pago
+                    </option>
+                    <option value='Não Pago'>
+                        Não Pago
+                    </option>
                 </select>
 
                 <input 
@@ -64,7 +76,7 @@ const FinancaForm = ({adicionarFinanca}) => {
                 value={data}
                 onChange={(e) => setData(e.target.value)}
                 className='p-2 text-xl text-black m-4 focus:outline-none 
-                focus:ring-2 focus:ring-[var(--cor-text-header)]'
+                focus:ring-2 focus:ring-[var(--cor-text-header)] bg-[var(--cor-bg-input)] rounded-lg'
                 required
                 />
 
@@ -74,20 +86,26 @@ const FinancaForm = ({adicionarFinanca}) => {
                 value={valor}
                 onChange={(e) => setValor(e.target.value)}
                 className='p-2 text-xl text-black m-4 focus:outline-none 
-                focus:ring-2 focus:ring-[var(--cor-text-header)]'
+                focus:ring-2 focus:ring-[var(--cor-text-header)] bg-[var(--cor-bg-input)] rounded-lg'
                 required
                 />
             </div>
 
-            <button type="submit" className="p-4 bg-green-600 text-lg m-4 rounded-lg font-bold">
-                Adicionar Finança
-            </button>
+            <div className='mt-6 flex justify-end gap-4'>
+                <button type="submit" className="bg-green-500 text-white p-4 rounded-lg cursor-pointer font-bold text-md">
+                    Adicionar Finança
+                </button>
+            </div>
         </form>
     );
 };
 
 FinancaForm.propTypes = {
     adicionarFinanca: PropTypes.func.isRequired, 
+    financaEditando: PropTypes.func.isRequired,
+    setFinancaEditando: PropTypes.func.isRequired,
+    indiceEditando: PropTypes.func.isRequired, 
+    setIndiceEditando: PropTypes.func.isRequired,
   };
 
 export default FinancaForm;

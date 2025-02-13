@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+import { FaEdit, FaTrash } from "react-icons/fa";
 
-const FinancaTabela = ({ financas, deletarFinanca }) => {
+const FinancaTabela = ({ financas, deletarFinanca, editarFinanca }) => {
   return (
-    <table  className="min-w-full bg-white border">
+    <table  className="w-full bg-white border text-">
       <thead>
         <tr>
           <th className="py-2 px-4 border">Nome</th>
@@ -25,8 +26,14 @@ const FinancaTabela = ({ financas, deletarFinanca }) => {
             <td className="py-2 px-4 border">
               <button
                 onClick={() => deletarFinanca(index)}
-                className="bg-red-500 text-white p-1 rounded">
-                Apagar
+                className="bg-red-500 text-white p-2 mr-2 rounded cursor-pointer">
+                <FaTrash/>
+              </button>
+
+              <button
+                onClick={() => editarFinanca(index)}
+                className="bg-gray-700 text-white p-2 rounded cursor-pointer">
+                <FaEdit/>
               </button>
             </td>
           </tr>
@@ -47,6 +54,7 @@ FinancaTabela.propTypes = {
     })
   ).isRequired, 
   deletarFinanca: PropTypes.func.isRequired,
+  editarFinanca: PropTypes.func.isRequired,
 };
 
 export default FinancaTabela;

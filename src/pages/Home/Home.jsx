@@ -1,8 +1,9 @@
 import { useState } from "react";
-import FinancaForm from "../Financas/FinancaForm";
-import FinancaTabela from "../Financas/FinancaTabela";
+
 import { FaPlus} from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
+import FinancaForm from "../../components/Financas/FinancaForm";
+import FinancaTabela from "../../components/Financas/FinancaTabela";
 
 const Home = () => {
   const [financas, setFinancas] = useState([]);

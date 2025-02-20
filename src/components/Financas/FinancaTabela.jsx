@@ -3,7 +3,7 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 
 const FinancaTabela = ({ financas, deletarFinanca, editarFinanca }) => {
   return (
-    <table  className="w-full bg-white border text-">
+    <table  className="w-full border text-">
       <thead>
         <tr>
           <th className="py-2 px-4 border">Nome</th>

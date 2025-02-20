@@ -3,8 +3,11 @@
 :root {
     --cor-text-header: #d7dae4;
     --cor-bg-header: #1B2536;
-    --cor-input: #2A3342;
     --cor-text-despesa: red;
     --cor-text-ganho: green;
     --cor-bg-input: #f1f1f1;
+}
+
+body {
+    background-color: #d1d0d0;
 }

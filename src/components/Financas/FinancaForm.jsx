@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const FinancaForm = ({adicionarFinanca, financaEditando, setFinancaEditando, indiceEditando, setIndiceEditando}) => {
     const [nome, setNome] = useState(financaEditando ? financaEditando.nome : '');
     const [categoria, setCategoria] = useState(financaEditando ? financaEditando.categoria: '');
-    const [status, setStatus] = useState(financaEditando ? financaEditando.status : 'Não pago');
+    const [status, setStatus] = useState(financaEditando ? financaEditando.status : 'Não Pago');
     const [data, setData] =  useState(financaEditando ? financaEditando.data : '');
     const [valor, setValor] = useState(financaEditando ? financaEditando.valor : '');
     

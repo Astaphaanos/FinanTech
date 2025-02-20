@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
+
 const FinancaForm = ({adicionarFinanca, financaEditando, setFinancaEditando, indiceEditando, setIndiceEditando}) => {
     const [nome, setNome] = useState(financaEditando ? financaEditando.nome : '');
     const [categoria, setCategoria] = useState(financaEditando ? financaEditando.categoria: '');
@@ -8,7 +9,7 @@ const FinancaForm = ({adicionarFinanca, financaEditando, setFinancaEditando, ind
     const [data, setData] =  useState(financaEditando ? financaEditando.data : '');
     const [valor, setValor] = useState(financaEditando ? financaEditando.valor : '');
     
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const novaFinanca = {
             nome,
